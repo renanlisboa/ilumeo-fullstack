@@ -1,9 +1,3 @@
-type PontoBody = {
-  colaboradorId: string;
-  entrada?: Date;
-  saida?: Date;
-};
-
 export class Ponto {
   private readonly colaboradorId: string;
   private readonly entrada?: Date;
@@ -43,3 +37,9 @@ export class Ponto {
     }
   }
 }
+
+type PontoBody = {
+  colaboradorId: string;
+  entrada?: Date;
+  saida?: Date;
+};

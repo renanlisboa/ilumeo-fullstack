@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Ponto } from '../../src/entities';
+import { Ponto } from '../../src/domain/entities';
 
 describe('Ponto', () => {
   it('Deve lançar uma exceção ao instânciar ponto com dados insuficientes', () => {
