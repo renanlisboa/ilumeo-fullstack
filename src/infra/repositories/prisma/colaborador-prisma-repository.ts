@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-import { Colaborador } from '../../domain/types';
+import { Colaborador } from '../../../domain/types';
 
 export class ColaboradorMemoryRepository {
   colaboradores: Colaborador[];

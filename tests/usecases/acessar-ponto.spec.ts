@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { ColaboradorMemoryRepository } from '../../src/infra/prisma';
+import { ColaboradorMemoryRepository } from '../../src/infra/repositories/prisma';
 import { AcessarPonto } from '../../src/application/usecases';
 
 describe('AcessarPonto', () => {
