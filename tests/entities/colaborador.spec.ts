@@ -1,15 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-export class Colaborador {
-  constructor(readonly codigo: string) {}
-
-  validarCodigo(): boolean {
-    if (this.codigo.length == 0 || this.codigo.length > 20) {
-      return false;
-    }
-    return true;
-  }
-}
+import { Colaborador } from '../../src/entities';
 
 describe('Colaborador', () => {
   it('deve validar se código possui entre 1 e 20 caracteres', () => {
