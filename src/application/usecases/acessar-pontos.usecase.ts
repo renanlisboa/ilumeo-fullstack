@@ -1,6 +1,6 @@
+import { ColaboradorRepository } from '../repositories';
 import { Colaborador } from '../../domain/entities';
 import { ColaboradorType } from '../../domain/types';
-import { ColaboradorRepository } from '../repositories';
 
 export class AcessarPontos {
   constructor(private readonly colaboradorRepository: ColaboradorRepository) {}
