@@ -1,1 +1,1 @@
-export * from './acessar-ponto.usecase';
+export * from './acessar-pontos.usecase';

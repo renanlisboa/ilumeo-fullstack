@@ -1,7 +1,7 @@
 import { Colaborador } from '../../domain/types';
 import { ColaboradorRepository } from '../repositories';
 
-export class AcessarPonto {
+export class AcessarPontos {
   constructor(private readonly colaboradorRepository: ColaboradorRepository) {}
 
   async execute(input: InputType): Promise<OutputType> {
