@@ -1,6 +1,6 @@
 import { it, expect } from 'vitest';
 
-import { PontoMemoryRepository } from '../../src/infra/repositories/prisma';
+import { PontoMemoryRepository } from '../../src/infra/repositories/memory';
 import {
   RegistrarEntrada,
   RegistrarSaida,

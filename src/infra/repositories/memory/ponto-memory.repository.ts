@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+
 import { PontoRepository } from '../../../application/repositories';
 import { PontoType } from '../../../domain/types';
 
