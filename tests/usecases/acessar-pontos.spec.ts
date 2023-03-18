@@ -15,6 +15,5 @@ describe('AcessarPontos', () => {
 
     expect(output.colaborador).toBeDefined();
     expect(output.colaborador.codigo).toBe('4SXXFMf');
-    expect(output.colaborador.pontos).toHaveLength(0);
   });
 });

@@ -23,7 +23,6 @@ export class ColaboradorMemoryRepository {
     const colaborador = {
       ...dadosColaborador,
       id: crypto.randomUUID(),
-      pontos: [],
     };
     this.colaboradores.push(colaborador);
     return colaborador;
