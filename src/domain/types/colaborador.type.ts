@@ -1,4 +1,4 @@
-export type Colaborador = {
+export type ColaboradorType = {
   id: string;
   codigo: string;
 };

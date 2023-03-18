@@ -1,45 +1,45 @@
 export class Ponto {
-  private readonly colaboradorId: string;
-  private readonly entrada?: Date;
-  private saida?: Date;
+  private readonly idColaborador: string;
+  private readonly dataEntrada?: Date;
+  dataSaida?: Date;
 
   constructor(body: PontoBody) {
     this.validarBody(body);
-    this.colaboradorId = body.colaboradorId;
-    this.entrada = body.entrada;
-    this.saida = body.saida;
+    this.idColaborador = body.idColaborador;
+    this.dataEntrada = body.dataEntrada;
+    this.dataSaida = body.dataSaida;
   }
 
-  getData(): PontoBody {
+  getDadosPonto(): PontoBody {
     return {
-      colaboradorId: this.colaboradorId,
-      entrada: this.entrada,
-      saida: this.saida,
+      idColaborador: this.idColaborador,
+      dataEntrada: this.dataEntrada,
+      dataSaida: this.dataSaida,
     };
   }
 
-  setSaida(saida: Date): void {
-    this.validarHoraEntradaESaida(saida);
-    this.saida = saida;
+  setDataSaida(dataSaida: Date): void {
+    this.validarHoraEntradaESaida(dataSaida);
+    this.dataSaida = dataSaida;
   }
 
   validarBody(body: PontoBody): void {
-    if (!body.colaboradorId) throw new Error('colaborador_id é obrigatório');
-    if (!body.entrada && !body.saida) {
+    if (!body.idColaborador) throw new Error('colaborador_id é obrigatório');
+    if (!body.dataEntrada && !body.dataSaida) {
       throw new Error('entrada ou saída é obrigatório');
     }
   }
 
-  validarHoraEntradaESaida(saida: Date): void {
-    if (!this.entrada) return;
-    if (saida <= this.entrada) {
+  validarHoraEntradaESaida(dataSaida: Date): void {
+    if (!this.dataEntrada) return;
+    if (dataSaida <= this.dataEntrada) {
       throw new Error('data de entrada maior ou igual a data de saída');
     }
   }
 }
 
 type PontoBody = {
-  colaboradorId: string;
-  entrada?: Date;
-  saida?: Date;
+  idColaborador: string;
+  dataEntrada?: Date;
+  dataSaida?: Date;
 };

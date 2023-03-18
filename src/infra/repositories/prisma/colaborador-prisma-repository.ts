@@ -1,15 +1,16 @@
 import crypto from 'crypto';
 
-import { Colaborador } from '../../../domain/types';
+import { ColaboradorRepository } from '../../../application/repositories';
+import { ColaboradorType } from '../../../domain/types';
 
-export class ColaboradorMemoryRepository {
-  colaboradores: Colaborador[];
+export class ColaboradorMemoryRepository implements ColaboradorRepository {
+  readonly colaboradores: ColaboradorType[];
 
   constructor() {
     this.colaboradores = [];
   }
 
-  async get(codigo: string): Promise<Colaborador | null> {
+  async buscar(codigo: string): Promise<ColaboradorType | null> {
     const colaborador = this.colaboradores.find(
       colaborador => colaborador.codigo == codigo,
     );
@@ -18,8 +19,8 @@ export class ColaboradorMemoryRepository {
   }
 
   async registrar(
-    dadosColaborador: Omit<Colaborador, 'id'>,
-  ): Promise<Colaborador> {
+    dadosColaborador: Omit<ColaboradorType, 'id'>,
+  ): Promise<ColaboradorType> {
     const colaborador = {
       ...dadosColaborador,
       id: crypto.randomUUID(),

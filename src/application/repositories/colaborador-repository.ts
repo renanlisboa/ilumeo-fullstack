@@ -1,8 +1,8 @@
-import { Colaborador } from '../../domain/types';
+import { ColaboradorType } from '../../domain/types';
 
 export interface ColaboradorRepository {
-  get: (codigo: string) => Promise<Colaborador | null>;
+  buscar: (codigo: string) => Promise<ColaboradorType | null>;
   registrar: (
-    dadosColaborador: Pick<Colaborador, 'codigo'>,
-  ) => Promise<Colaborador>;
+    dadosColaborador: Pick<ColaboradorType, 'codigo'>,
+  ) => Promise<ColaboradorType>;
 }

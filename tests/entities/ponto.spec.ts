@@ -4,7 +4,7 @@ import { Ponto } from '../../src/domain/entities';
 describe('Ponto', () => {
   it('Deve lançar uma exceção ao instânciar ponto com dados insuficientes', () => {
     const body = {
-      colaboradorId: 'qualquer_id',
+      idColaborador: 'qualquer_id',
     };
 
     const ponto = (): Ponto => new Ponto(body);
@@ -14,30 +14,30 @@ describe('Ponto', () => {
 
   it('Deve adicionar hora de saída ao ponto', () => {
     const body = {
-      entrada: new Date('2023-03-18 08:00'),
-      colaboradorId: 'qualquer_id',
+      dataEntrada: new Date('2023-03-18 08:00'),
+      idColaborador: 'qualquer_id',
     };
     const ponto = new Ponto(body);
-    const saida = new Date('2023-03-18 17:00');
+    const dataSaida = new Date('2023-03-18 17:00');
 
-    ponto.setSaida(saida);
+    ponto.setDataSaida(dataSaida);
 
-    const data = ponto.getData();
-    expect(data.saida).toBe(saida);
+    const dadosPonto = ponto.getDadosPonto();
+    expect(dadosPonto.dataSaida).toBe(dataSaida);
   });
 
-  it('Deve validar se hora de saída é menor ou igual a hora de entrada', () => {
+  it('Deve validar se data de saída é menor ou igual a data de entrada', () => {
     const body = {
-      entrada: new Date('2023-03-18 08:00'),
-      colaboradorId: 'qualquer_id',
+      dataEntrada: new Date('2023-03-18 08:00'),
+      idColaborador: 'qualquer_id',
     };
     const ponto = new Ponto(body);
-    const saida = new Date('2023-03-18 07:00');
+    const dataSaida = new Date('2023-03-18 07:00');
 
-    const setSaida = (): void => {
-      ponto.setSaida(saida);
+    const setDataSaida = (): void => {
+      ponto.setDataSaida(dataSaida);
     };
 
-    expect(setSaida).toThrowError();
+    expect(setDataSaida).toThrowError();
   });
 });
