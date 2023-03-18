@@ -1,13 +1,12 @@
 {
   "name": "ilumeo-fulstack",
   "version": "0.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "vitest"
   },
-  "keywords": [],
-  "author": "",
+  "repository": "git@github.com:renanlisboa/ilumeo-fullstack.git",
+  "author": "renanlisboa <renlp89.developer@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.15.3",
