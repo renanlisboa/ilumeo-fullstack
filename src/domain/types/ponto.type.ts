@@ -1,5 +1,5 @@
 export type PontoType = {
-  id: string;
+  id?: string;
   idColaborador: string;
   dataEntrada?: Date;
   dataSaida?: Date;

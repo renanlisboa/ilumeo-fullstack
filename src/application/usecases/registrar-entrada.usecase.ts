@@ -6,12 +6,11 @@ export class RegistrarEntrada {
 
   async execute(input: InputType): Promise<void> {
     const ponto = new Ponto(input);
-    await this.pontoRepository.registrar(ponto.getDadosPonto());
+    await this.pontoRepository.registrarEntrada(ponto.getDadosPonto());
   }
 }
 
 type InputType = {
   idColaborador: string;
-  dataEntrada?: Date;
-  dataSaida?: Date;
+  dataEntrada: Date;
 };

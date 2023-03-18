@@ -1,10 +1,12 @@
 export class Ponto {
+  private readonly id?: string;
   private readonly idColaborador: string;
   private readonly dataEntrada?: Date;
   dataSaida?: Date;
 
   constructor(body: PontoBody) {
     this.validarBody(body);
+    this.id = body.id;
     this.idColaborador = body.idColaborador;
     this.dataEntrada = body.dataEntrada;
     this.dataSaida = body.dataSaida;
@@ -12,6 +14,7 @@ export class Ponto {
 
   getDadosPonto(): PontoBody {
     return {
+      id: this.id,
       idColaborador: this.idColaborador,
       dataEntrada: this.dataEntrada,
       dataSaida: this.dataSaida,
@@ -39,6 +42,7 @@ export class Ponto {
 }
 
 type PontoBody = {
+  id?: string;
   idColaborador: string;
   dataEntrada?: Date;
   dataSaida?: Date;
