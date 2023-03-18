@@ -1,29 +1,10 @@
 import { describe, it, expect } from 'vitest';
 
 import { PontoMemoryRepository } from '../../src/infra/repositories/prisma';
-import { RegistrarEntrada } from '../../src/application/usecases';
-import { PontoRepository } from '../../src/application/repositories';
-import { Ponto } from '../../src/domain/entities';
-
-class RegistrarSaida {
-  constructor(private readonly pontoRepository: PontoRepository) {}
-
-  async execute(input: InputType): Promise<void> {
-    const ponto = await this.pontoRepository.buscarPorIdColaborador(
-      input.idColaborador,
-    );
-    if (!ponto) throw new Error('Ponto não encontrado');
-    const pontoAtualizado = new Ponto(ponto);
-    pontoAtualizado.setDataSaida(input.dataSaida);
-    const dadosPontoAtualizado = pontoAtualizado.getDadosPonto();
-    await this.pontoRepository.registrarSaida(dadosPontoAtualizado);
-  }
-}
-
-type InputType = {
-  idColaborador: string;
-  dataSaida: Date;
-};
+import {
+  RegistrarEntrada,
+  RegistrarSaida,
+} from '../../src/application/usecases';
 
 describe('RegistrarEntrada', () => {
   it('Deve ser possível registrar data de entrada', async () => {
