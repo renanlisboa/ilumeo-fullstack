@@ -1,3 +1,4 @@
+import { Colaborador } from '../../domain/types';
 import { ColaboradorRepository } from '../repositories';
 
 export class AcessarPonto {
@@ -14,15 +15,9 @@ export class AcessarPonto {
       const novoColaborador = await this.colaboradorRepository.registrar(
         dadosNovoColaborador,
       );
-      return {
-        colaboradorId: novoColaborador.id,
-        codigoColaborador: novoColaborador.codigo,
-      };
+      return { colaborador: novoColaborador };
     }
-    return {
-      colaboradorId: colaborador.id,
-      codigoColaborador: colaborador.codigo,
-    };
+    return { colaborador };
   }
 }
 
@@ -31,6 +26,5 @@ type InputType = {
 };
 
 type OutputType = {
-  colaboradorId: string;
-  codigoColaborador: string;
+  colaborador: Colaborador;
 };
