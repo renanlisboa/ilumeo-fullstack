@@ -1,8 +1,8 @@
 export class Ponto {
   private readonly id?: string;
   private readonly idColaborador: string;
-  private readonly dataEntrada?: Date;
-  dataSaida?: Date;
+  private readonly dataEntrada?: Date | string;
+  dataSaida?: Date | string;
 
   constructor(body: PontoBody) {
     this.validarBody(body);
@@ -44,6 +44,6 @@ export class Ponto {
 type PontoBody = {
   id?: string;
   idColaborador: string;
-  dataEntrada?: Date;
-  dataSaida?: Date;
+  dataEntrada?: Date | string;
+  dataSaida?: Date | string;
 };
