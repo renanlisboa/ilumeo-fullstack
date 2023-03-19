@@ -1,5 +1,6 @@
 import { PontoRepository } from '../repositories';
 import { Ponto } from '../../domain/entities';
+import { NotFoundError } from '../../domain/errors';
 
 export class RegistrarSaida {
   constructor(private readonly pontoRepository: PontoRepository) {}
@@ -8,7 +9,7 @@ export class RegistrarSaida {
     const ponto = await this.pontoRepository.buscarPorIdColaborador(
       input.idColaborador,
     );
-    if (!ponto) throw new Error('Ponto não encontrado');
+    if (!ponto) throw new NotFoundError('ponto não encontrado');
     const pontoAtualizado = new Ponto(ponto);
     pontoAtualizado.setDataSaida(input.dataSaida);
     const dadosPontoAtualizado = pontoAtualizado.getDadosPonto();

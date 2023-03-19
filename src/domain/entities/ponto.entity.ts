@@ -1,3 +1,5 @@
+import { BadRequestError, ConflictError } from '../errors';
+
 export class Ponto {
   private readonly id?: string;
   private readonly idColaborador: string;
@@ -27,16 +29,18 @@ export class Ponto {
   }
 
   validarBody(body: PontoBody): void {
-    if (!body.idColaborador) throw new Error('colaborador_id é obrigatório');
+    if (!body.idColaborador) {
+      throw new BadRequestError('colaborador_id é obrigatório');
+    }
     if (!body.dataEntrada && !body.dataSaida) {
-      throw new Error('entrada ou saída é obrigatório');
+      throw new BadRequestError('entrada ou saída é obrigatório');
     }
   }
 
   validarHoraEntradaESaida(dataSaida: Date): void {
     if (!this.dataEntrada) return;
     if (dataSaida <= this.dataEntrada) {
-      throw new Error('data de entrada maior ou igual a data de saída');
+      throw new ConflictError('data de entrada maior ou igual a data de saída');
     }
   }
 }
