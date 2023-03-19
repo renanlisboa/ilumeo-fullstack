@@ -3,66 +3,14 @@ import { describe, it, expect } from 'vitest';
 import { PontoMemoryRepository } from '../../src/infra/repositories/memory';
 import { RegistrarSaida } from '../../src/application/usecases';
 import { RegistrarSaidaZodValidator } from '../../src/validators/zod';
-import {
-  HttpRequest,
-  HttpResponse,
-  Validator,
-} from '../../src/presentation/contracts';
-// import { RegistraSaidaController } from '../../src/presentation/controllers';
-
-export class RegistraSaidaController {
-  constructor(
-    private readonly validator: Validator,
-    private readonly registrarSaida: RegistrarSaida,
-  ) {}
-
-  async handle({ body }: HttpRequest): Promise<HttpResponse> {
-    try {
-      this.validator.validate(body);
-      await this.registrarSaida.execute(body);
-      return {
-        statusCode: 201,
-        data: null,
-      };
-    } catch (error: any) {
-      if (error?.name == 'ZodError' || error?.name == 'BadRequestError') {
-        return {
-          statusCode: 400,
-          data: error,
-        };
-      }
-      if (error?.name == 'NotFoundError') {
-        return {
-          statusCode: 404,
-          data: {
-            name: error.name,
-            message: error.message,
-          },
-        };
-      }
-      if (error?.name == 'ConflictError') {
-        return {
-          statusCode: 409,
-          data: {
-            name: error.name,
-            message: error.message,
-          },
-        };
-      }
-      return {
-        statusCode: 500,
-        data: null,
-      };
-    }
-  }
-}
+import { RegistrarSaidaController } from '../../src/presentation/controllers';
 
 describe('RegistrarSaidaController', () => {
   it('Deve retornar status code 400 caso dados obrigatórios não sejam enviados', async () => {
     const pontoMemoryRepository = new PontoMemoryRepository();
     const registrarSaida = new RegistrarSaida(pontoMemoryRepository);
     const validator = new RegistrarSaidaZodValidator();
-    const registraSaidaController = new RegistraSaidaController(
+    const registrarSaidaController = new RegistrarSaidaController(
       validator,
       registrarSaida,
     );
@@ -70,7 +18,7 @@ describe('RegistrarSaidaController', () => {
       body: {},
     };
 
-    const output = await registraSaidaController.handle(requisicao);
+    const output = await registrarSaidaController.handle(requisicao);
 
     expect(output.statusCode).toBe(400);
   });
@@ -79,7 +27,7 @@ describe('RegistrarSaidaController', () => {
     const pontoMemoryRepository = new PontoMemoryRepository();
     const registrarSaida = new RegistrarSaida(pontoMemoryRepository);
     const validator = new RegistrarSaidaZodValidator();
-    const registraSaidaController = new RegistraSaidaController(
+    const registrarSaidaController = new RegistrarSaidaController(
       validator,
       registrarSaida,
     );
@@ -90,7 +38,7 @@ describe('RegistrarSaidaController', () => {
       },
     };
 
-    const output = await registraSaidaController.handle(requisicao);
+    const output = await registrarSaidaController.handle(requisicao);
 
     expect(output.statusCode).toBe(404);
     expect(output.data.name).toBe('NotFoundError');
@@ -101,7 +49,7 @@ describe('RegistrarSaidaController', () => {
     const pontoMemoryRepository = new PontoMemoryRepository();
     const registrarSaida = new RegistrarSaida(pontoMemoryRepository);
     const validator = new RegistrarSaidaZodValidator();
-    const registraSaidaController = new RegistraSaidaController(
+    const registrarSaidaController = new RegistrarSaidaController(
       validator,
       registrarSaida,
     );
@@ -116,7 +64,7 @@ describe('RegistrarSaidaController', () => {
       },
     };
 
-    const output = await registraSaidaController.handle(requisicao);
+    const output = await registrarSaidaController.handle(requisicao);
 
     expect(output.statusCode).toBe(409);
     expect(output.data.name).toBe('ConflictError');
@@ -129,7 +77,7 @@ describe('RegistrarSaidaController', () => {
     const pontoMemoryRepository = new PontoMemoryRepository();
     const registrarSaida = new RegistrarSaida(pontoMemoryRepository);
     const validator = new RegistrarSaidaZodValidator();
-    const registraSaidaController = new RegistraSaidaController(
+    const registrarSaidaController = new RegistrarSaidaController(
       validator,
       registrarSaida,
     );
@@ -144,7 +92,7 @@ describe('RegistrarSaidaController', () => {
       },
     };
 
-    const output = await registraSaidaController.handle(requisicao);
+    const output = await registrarSaidaController.handle(requisicao);
 
     expect(output.statusCode).toBe(201);
     expect(output.data).toBe(null);
