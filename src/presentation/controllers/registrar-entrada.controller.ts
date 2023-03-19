@@ -1,0 +1,31 @@
+import { RegistrarEntrada } from '../../application/usecases';
+import { HttpRequest, HttpResponse, Validator } from '../contracts';
+
+export class RegistrarEntradaController {
+  constructor(
+    private readonly validator: Validator,
+    private readonly registrarEntrada: RegistrarEntrada,
+  ) {}
+
+  async handle({ body }: HttpRequest): Promise<HttpResponse> {
+    try {
+      this.validator.validate(body);
+      await this.registrarEntrada.execute(body);
+      return {
+        statusCode: 201,
+        data: null,
+      };
+    } catch (error: any) {
+      if (error?.name == 'ZodError' || error?.name == 'BadRequestError') {
+        return {
+          statusCode: 400,
+          data: error,
+        };
+      }
+      return {
+        statusCode: 500,
+        data: null,
+      };
+    }
+  }
+}
