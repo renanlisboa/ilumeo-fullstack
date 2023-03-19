@@ -9,12 +9,10 @@ it('Deve retornar status code 200 ao listar pontos', async () => {
   const listarPontos = new ListarPontos(pontoMemoryRepository);
   const listarPontosController = new ListarPontosController(listarPontos);
   const requisicao = {
-    query: {
-      pagina: 0,
-      itensPorPagina: 10,
-    },
+    query: {},
   };
 
   const output = await listarPontosController.handle(requisicao);
+
   expect(output.statusCode).toBe(200);
 });

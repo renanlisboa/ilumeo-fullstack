@@ -19,7 +19,7 @@ export class AcessarPontosController {
       if (error?.name == 'ZodError' || error?.name == 'BadRequestError') {
         return {
           statusCode: 400,
-          data: null,
+          data: error,
         };
       }
       return {

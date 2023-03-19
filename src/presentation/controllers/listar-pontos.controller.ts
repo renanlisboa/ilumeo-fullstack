@@ -12,7 +12,6 @@ export class ListarPontosController {
         data,
       };
     } catch (error) {
-      console.log(error);
       return {
         statusCode: 500,
         data: null,

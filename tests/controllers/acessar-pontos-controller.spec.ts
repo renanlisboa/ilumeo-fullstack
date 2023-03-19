@@ -22,5 +22,4 @@ it('Deve retornar status 400 se o código do colaborador for inválido', async (
   const output = await acessarPontosController.handle(requisicao);
 
   expect(output.statusCode).toBe(400);
-  expect(output.data).toBe(null);
 });

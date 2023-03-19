@@ -1,3 +1,3 @@
 export interface Validator {
-  validate: (body: any) => any;
+  validate: (body: any) => void;
 }
