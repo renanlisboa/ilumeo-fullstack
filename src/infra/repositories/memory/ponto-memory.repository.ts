@@ -44,21 +44,22 @@ export class PontoMemoryRepository implements PontoRepository {
     return ponto;
   }
 
-  async listarPaginado(filtros: {
-    pagina: number;
-    itensPorPagina: number;
-  }): Promise<{
+  async listarPaginado(query?: any): Promise<{
     totalRegistros: number;
     registros: PontoType[];
   }> {
-    const { pagina, itensPorPagina } = filtros;
-    const indiceInicial = pagina > 0 ? pagina * itensPorPagina : 0;
-    const indiceFinal =
-      pagina > 0 ? (pagina + 1) * itensPorPagina : itensPorPagina;
-    const pontos = this.pontos.slice(indiceInicial, indiceFinal);
+    let indiceInicial = 0;
+    let indiceFinal = 10;
+    if (query?.pagina && query?.itensPorPagina) {
+      const pagina = parseInt(query.pagina);
+      const itensPorPagina = parseInt(query.itensPorPagina);
+      indiceInicial = pagina > 0 ? pagina * itensPorPagina : 0;
+      indiceFinal = pagina > 0 ? (pagina + 1) * itensPorPagina : itensPorPagina;
+    }
+    const registros = this.pontos.slice(indiceInicial, indiceFinal);
     return {
-      totalRegistros: pontos.length,
-      registros: pontos,
+      totalRegistros: registros.length,
+      registros,
     };
   }
 
