@@ -6,11 +6,10 @@
   "license": "MIT",
   "scripts": {
     "docker:db": "docker run --name ilumeo_fullstack_db -p 5432:5432 -e POSTGRES_PASSWORD=docker -d postgres",
+    "test": "vitest",
     "dev": "tsx src/main",
-    "test": "vitest"
-  },
-  "prisma": {
-    "schema": "./src/infra/database/prisma/schema.prisma"
+    "build": "tsup src",
+    "start": "node dist/main"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

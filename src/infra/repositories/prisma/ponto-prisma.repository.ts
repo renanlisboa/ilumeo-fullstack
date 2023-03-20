@@ -1,4 +1,4 @@
-import { prismaClient } from '../../database/prisma/prisma-client';
+import { prismaClient } from '../../../../prisma/prisma-client';
 import { PontoRepository } from '../../../application/repositories';
 import { PontoType } from '../../../domain/types';
 

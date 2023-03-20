@@ -1,4 +1,4 @@
-import { prismaClient } from '../../database/prisma/prisma-client';
+import { prismaClient } from '../../../../prisma/prisma-client';
 import { ColaboradorRepository } from '../../../application/repositories';
 import { ColaboradorType } from '../../../domain/types';
 
