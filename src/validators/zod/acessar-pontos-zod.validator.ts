@@ -11,7 +11,7 @@ export class AcessarPontosZodValidator implements Validator {
     });
   }
 
-  validate(body: any): void {
-    this.schema.parse(body);
+  validate(body: any): any {
+    return this.schema.parse(body);
   }
 }

@@ -7,12 +7,12 @@ export class RegistrarSaidaZodValidator implements Validator {
 
   constructor() {
     this.schema = z.object({
-      idColaborador: z.string(),
-      dataSaida: z.date(),
+      id: z.string(),
+      dataSaida: z.string().transform(date => new Date(date)),
     });
   }
 
-  validate(body: any): void {
-    this.schema.parse(body);
+  validate(body: any): any {
+    return this.schema.parse(body);
   }
 }

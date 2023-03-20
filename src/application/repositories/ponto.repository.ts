@@ -2,13 +2,16 @@ import { PontoType } from '../../domain/types';
 
 export interface PontoRepository {
   registrarEntrada: (
-    dadosPonto: Omit<PontoType, 'id' | 'dataSaida'>,
+    dadosPonto: Pick<PontoType, 'idColaborador'>,
   ) => Promise<void>;
-  registrarSaida: (dadosPonto: Omit<PontoType, 'dataEntrada'>) => Promise<void>;
-  buscarPorIdColaborador: (idColaborador: string) => Promise<PontoType | null>;
+  registrarSaida: (
+    dadosPonto: Omit<PontoType, 'dataEntrada' | 'idColaborador'>,
+  ) => Promise<void>;
+  buscarPorId: (id: string) => Promise<PontoType | null>;
   listarPaginado: (query?: any) => Promise<{
     totalRegistros: number;
     registros: PontoType[];
   }>;
-  listar: () => Promise<PontoType[]>;
+  listar: (idColaborador: string) => Promise<PontoType[]>;
+  remover?: (id: string) => Promise<void>;
 }

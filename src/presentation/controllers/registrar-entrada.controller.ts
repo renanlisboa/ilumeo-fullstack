@@ -9,8 +9,8 @@ export class RegistrarEntradaController {
 
   async handle({ body }: HttpRequest): Promise<HttpResponse> {
     try {
-      this.validator.validate(body);
-      await this.registrarEntrada.execute(body);
+      const dadosValidados = this.validator.validate(body);
+      await this.registrarEntrada.execute(dadosValidados);
       return {
         statusCode: 201,
         data: null,
@@ -20,6 +20,15 @@ export class RegistrarEntradaController {
         return {
           statusCode: 400,
           data: error,
+        };
+      }
+      if (error?.name == 'NotFoundError') {
+        return {
+          statusCode: 404,
+          data: {
+            name: error.name,
+            message: error.message,
+          },
         };
       }
       return {

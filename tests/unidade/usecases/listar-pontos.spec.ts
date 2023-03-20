@@ -1,7 +1,7 @@
 import { it, expect } from 'vitest';
 
-import { PontoMemoryRepository } from '../../src/infra/repositories/memory';
-import { ListarPontos } from '../../src/application/usecases';
+import { PontoMemoryRepository } from '../../../src/infra/repositories/memory';
+import { ListarPontos } from '../../../src/application/usecases';
 
 it('Colaborador deve ser registrado caso ainda não possua registro', async () => {
   const pontoMemoryRepository = new PontoMemoryRepository();

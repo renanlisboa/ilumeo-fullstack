@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { Colaborador } from '../../src/domain/entities';
+import { Colaborador } from '../../../src/domain/entities';
 
 describe('Colaborador', () => {
   it('Deve validar se código possui entre 1 e 20 caracteres', () => {

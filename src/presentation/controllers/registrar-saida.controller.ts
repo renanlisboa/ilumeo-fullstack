@@ -9,8 +9,8 @@ export class RegistrarSaidaController {
 
   async handle({ body }: HttpRequest): Promise<HttpResponse> {
     try {
-      this.validator.validate(body);
-      await this.registrarSaida.execute(body);
+      const dadosValidados = this.validator.validate(body);
+      await this.registrarSaida.execute(dadosValidados);
       return {
         statusCode: 201,
         data: null,

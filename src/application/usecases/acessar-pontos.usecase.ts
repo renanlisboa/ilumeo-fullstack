@@ -7,7 +7,7 @@ export class AcessarPontos {
   constructor(private readonly colaboradorRepository: ColaboradorRepository) {}
 
   async execute(input: InputType): Promise<OutputType> {
-    const colaborador = await this.colaboradorRepository.buscar(
+    const colaborador = await this.colaboradorRepository.buscarPorCodigo(
       input.codigoColaborador,
     );
     if (!colaborador) {
@@ -16,7 +16,7 @@ export class AcessarPontos {
       if (!codigoValido) {
         throw new BadRequestError('codigo de colaborador inválido');
       }
-      const dadosNovoColaborador = await this.colaboradorRepository.registrar(
+      const dadosNovoColaborador = await this.colaboradorRepository.cadastrar(
         novoColaborador,
       );
       return { colaborador: dadosNovoColaborador };

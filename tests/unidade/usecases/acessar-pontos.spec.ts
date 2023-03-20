@@ -1,7 +1,7 @@
 import { it, expect } from 'vitest';
 
-import { ColaboradorMemoryRepository } from '../../src/infra/repositories/memory';
-import { AcessarPontos } from '../../src/application/usecases';
+import { ColaboradorMemoryRepository } from '../../../src/infra/repositories/memory';
+import { AcessarPontos } from '../../../src/application/usecases';
 
 it('Colaborador deve ser registrado caso ainda não possua registro', async () => {
   const colaboradorRepository = new ColaboradorMemoryRepository();

@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 
-import { ColaboradorMemoryRepository } from '../../src/infra/repositories/memory';
-import { AcessarPontos } from '../../src/application/usecases';
-import { AcessarPontosZodValidator } from '../../src/validators/zod';
-import { AcessarPontosController } from '../../src/presentation/controllers';
+import { ColaboradorMemoryRepository } from '../../../src/infra/repositories/memory';
+import { AcessarPontos } from '../../../src/application/usecases';
+import { AcessarPontosZodValidator } from '../../../src/validators/zod';
+import { AcessarPontosController } from '../../../src/presentation/controllers';
 
 describe('AcessarPontosController', () => {
   it('Deve retornar status 400 se o código do colaborador for inválido', async () => {

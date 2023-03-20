@@ -9,8 +9,8 @@ export class AcessarPontosController {
 
   async handle({ body }: HttpRequest): Promise<HttpResponse> {
     try {
-      this.validator.validate(body);
-      const data = await this.acessarPontos.execute(body);
+      const dadosValidados = this.validator.validate(body);
+      const data = await this.acessarPontos.execute(dadosValidados);
       return {
         statusCode: 200,
         data,

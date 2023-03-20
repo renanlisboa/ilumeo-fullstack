@@ -10,7 +10,15 @@ export class ColaboradorMemoryRepository implements ColaboradorRepository {
     this.colaboradores = [];
   }
 
-  async buscar(codigo: string): Promise<ColaboradorType | null> {
+  async buscarPorId(id: string): Promise<ColaboradorType | null> {
+    const colaborador = this.colaboradores.find(
+      colaborador => colaborador.id == id,
+    );
+    if (!colaborador) return null;
+    return colaborador;
+  }
+
+  async buscarPorCodigo(codigo: string): Promise<ColaboradorType | null> {
     const colaborador = this.colaboradores.find(
       colaborador => colaborador.codigo == codigo,
     );
@@ -18,7 +26,7 @@ export class ColaboradorMemoryRepository implements ColaboradorRepository {
     return colaborador;
   }
 
-  async registrar(
+  async cadastrar(
     dadosColaborador: Omit<ColaboradorType, 'id'>,
   ): Promise<ColaboradorType> {
     const colaborador = {

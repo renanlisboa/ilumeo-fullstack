@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 
-import { PontoMemoryRepository } from '../../src/infra/repositories/memory';
-import { RegistrarSaida } from '../../src/application/usecases';
-import { RegistrarSaidaZodValidator } from '../../src/validators/zod';
-import { RegistrarSaidaController } from '../../src/presentation/controllers';
+import { PontoMemoryRepository } from '../../../src/infra/repositories/memory';
+import { RegistrarSaida } from '../../../src/application/usecases';
+import { RegistrarSaidaZodValidator } from '../../../src/validators/zod';
+import { RegistrarSaidaController } from '../../../src/presentation/controllers';
 
 describe('RegistrarSaidaController', () => {
   it('Deve retornar status code 400 caso dados obrigatórios não sejam enviados', async () => {
@@ -33,8 +33,8 @@ describe('RegistrarSaidaController', () => {
     );
     const requisicao = {
       body: {
-        idColaborador: 'qualquer_id',
-        dataSaida: new Date('2023-03-18 17:00'),
+        id: 'qualquer_id',
+        dataSaida: new Date().toISOString(),
       },
     };
 
@@ -55,12 +55,14 @@ describe('RegistrarSaidaController', () => {
     );
     await pontoMemoryRepository.registrarEntrada({
       idColaborador: 'qualquer_id',
-      dataEntrada: new Date('2023-03-18 08:00'),
     });
+    const pontos = await pontoMemoryRepository.listar();
+    const data = new Date();
+    data.setHours(data.getHours() - 1);
     const requisicao = {
       body: {
-        idColaborador: 'qualquer_id',
-        dataSaida: new Date('2023-03-18 07:00'),
+        id: pontos[0].id,
+        dataSaida: data.toISOString(),
       },
     };
 
@@ -83,12 +85,14 @@ describe('RegistrarSaidaController', () => {
     );
     await pontoMemoryRepository.registrarEntrada({
       idColaborador: 'qualquer_id',
-      dataEntrada: new Date('2023-03-18 08:00'),
     });
+    const pontos = await pontoMemoryRepository.listar();
+    const data = new Date();
+    data.setHours(data.getHours() + 1);
     const requisicao = {
       body: {
-        idColaborador: 'qualquer_id',
-        dataSaida: new Date('2023-03-18 17:00'),
+        id: pontos[0].id,
+        dataSaida: data.toISOString(),
       },
     };
 

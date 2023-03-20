@@ -11,17 +11,19 @@ export class PontoMemoryRepository implements PontoRepository {
   }
 
   async registrarEntrada(
-    dadosPonto: Omit<PontoType, 'id' | 'dataSaida'>,
+    dadosPonto: Pick<PontoType, 'idColaborador'>,
   ): Promise<void> {
     const ponto = {
       ...dadosPonto,
+      dataEntrada: new Date(),
+      dataSaida: null,
       id: crypto.randomUUID(),
     };
     this.pontos.push(ponto);
   }
 
   async registrarSaida(
-    dadosPonto: Omit<PontoType, 'dataEntrada'>,
+    dadosPonto: Omit<PontoType, 'dataEntrada' | 'idColaborador'>,
   ): Promise<void> {
     const pontosAtualizados = this.pontos.map(ponto =>
       ponto.id == dadosPonto.id
@@ -34,12 +36,8 @@ export class PontoMemoryRepository implements PontoRepository {
     this.pontos = pontosAtualizados;
   }
 
-  async buscarPorIdColaborador(
-    idColaborador: string,
-  ): Promise<PontoType | null> {
-    const ponto = this.pontos.find(
-      ponto => ponto.idColaborador == idColaborador,
-    );
+  async buscarPorId(id: string): Promise<PontoType | null> {
+    const ponto = this.pontos.find(ponto => ponto.id == id);
     if (!ponto) return null;
     return ponto;
   }

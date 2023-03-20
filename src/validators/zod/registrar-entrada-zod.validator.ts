@@ -8,11 +8,10 @@ export class RegistrarEntradaZodValidator implements Validator {
   constructor() {
     this.schema = z.object({
       idColaborador: z.string(),
-      dataEntrada: z.date(),
     });
   }
 
-  validate(body: any): void {
-    this.schema.parse(body);
+  validate(body: any): any {
+    return this.schema.parse(body);
   }
 }
