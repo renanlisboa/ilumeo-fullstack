@@ -10,7 +10,7 @@
     "dev": "tsx src/main",
     "build": "tsup src ",
     "deploy": "npm i && npm run build && npx prisma migrate deploy",
-    "start": "node dist/main"
+    "start": "node dist/main/index.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
