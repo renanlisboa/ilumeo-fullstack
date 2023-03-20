@@ -9,7 +9,7 @@
     "test": "vitest",
     "dev": "tsx src/main",
     "build": "tsup src ",
-    "deploy": "npm run install && npm run build && npx prisma migrate deploy",
+    "deploy": "npm i && npm run build && npx prisma migrate deploy",
     "start": "node dist/main"
   },
   "devDependencies": {
