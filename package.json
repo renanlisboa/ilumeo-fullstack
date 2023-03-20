@@ -8,7 +8,8 @@
     "docker:db": "docker run --name ilumeo_fullstack_db -p 5432:5432 -e POSTGRES_PASSWORD=docker -d postgres",
     "test": "vitest",
     "dev": "tsx src/main",
-    "build": "tsup src",
+    "build": "tsup src ",
+    "deploy": "npm run ci && npm run build && npx prisma migrate deploy",
     "start": "node dist/main"
   },
   "devDependencies": {
