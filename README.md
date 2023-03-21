@@ -14,6 +14,8 @@ Esse case/teste faz parte do processo de recrutamento da empresa Ilumeo.
 
 ## Instalação Ambiente Dev
 
+OBS! RENOMEAR ARQUIVO .env.example PARA .env E INSERIR URL DE CONEXÃO EM 'DATABASE_URL'
+
 ```bash
 # docker postgres
 $ npm run docker:db
