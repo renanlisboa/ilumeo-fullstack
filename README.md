@@ -7,7 +7,7 @@ Esse case/teste faz parte do processo de recrutamento da empresa Ilumeo.
 
 <br>
 
-## :requerimentos Requerimentos
+## Requerimentos
 
 - [Node.js v16](https://nodejs.org/en/)
 - [Docker v23](https://www.docker.com/)
