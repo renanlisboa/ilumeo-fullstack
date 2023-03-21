@@ -38,7 +38,6 @@ $ npm run dev
 ## Testes
 
 ```bash
-# ATENÇÃO! LIGAR O SERVIDOR ANTES DE TESTAR
 $ npm test
 ```
 
