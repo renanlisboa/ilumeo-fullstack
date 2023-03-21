@@ -6,6 +6,10 @@ import routes from './routes';
 
 envConfig();
 const server = new HttpServerAdapter();
-server.useMiddleware(cors());
+server.useMiddleware(
+  cors({
+    origin: process.env.APP_URL,
+  }),
+);
 server.useRoute('/api', routes);
 server.listen(Number(process.env.PORT));
