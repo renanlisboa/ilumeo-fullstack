@@ -24,12 +24,20 @@ export class PontoPrismaRepository implements PontoRepository {
     });
   }
 
+  async buscarPorIdColaborador(
+    idColaborador: string,
+  ): Promise<PontoType | null> {
+    return await prismaClient.ponto.findFirst({
+      where: { idColaborador, dataSaida: null },
+    });
+  }
+
   async listarPaginado(query?: any): Promise<{
     totalRegistros: number;
     registros: PontoType[];
   }> {
     let offset = 0;
-    let limit = 10;
+    let limit = 8;
     if (query?.pagina && query?.itensPorPagina) {
       const pagina = parseInt(query.pagina) - 1;
       const itensPorPagina = parseInt(query.itensPorPagina);
@@ -39,9 +47,11 @@ export class PontoPrismaRepository implements PontoRepository {
     delete query.pagina;
     delete query.itensPorPagina;
     const data = await prismaClient.$transaction([
-      prismaClient.ponto.count({ where: query }),
+      prismaClient.ponto.count({
+        where: { ...query, NOT: [{ dataSaida: null }] },
+      }),
       prismaClient.ponto.findMany({
-        where: query,
+        where: { ...query, NOT: [{ dataSaida: null }] },
         skip: offset,
         take: limit,
       }),

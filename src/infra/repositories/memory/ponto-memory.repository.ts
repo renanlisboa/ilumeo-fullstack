@@ -42,6 +42,16 @@ export class PontoMemoryRepository implements PontoRepository {
     return ponto;
   }
 
+  async buscarPorIdColaborador(
+    idColaborador: string,
+  ): Promise<PontoType | null> {
+    const ponto = this.pontos.find(
+      ponto => ponto.idColaborador == idColaborador,
+    );
+    if (!ponto) return null;
+    return ponto;
+  }
+
   async listarPaginado(query?: any): Promise<{
     totalRegistros: number;
     registros: PontoType[];

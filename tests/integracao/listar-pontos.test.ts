@@ -21,6 +21,15 @@ it('Deve retornar uma lista de pontos paginada', async () => {
   await axios.post(`${process.env.API_URL}/api/registrar-entrada`, {
     idColaborador: dadosColaborador.colaborador.id,
   });
+  const { data: ponto } = await axios.get(
+    `${process.env.API_URL}/api/buscar-ponto?idColaborador=${dadosColaborador.colaborador.id}`,
+  );
+
+  const dataSaida = new Date();
+  dataSaida.setHours(dataSaida.getHours() + 1);
+  await axios.put(`${process.env.API_URL}/api/registrar-saida/${ponto.id}`, {
+    dataSaida: dataSaida.toISOString(),
+  });
 
   const { status, data: dadosListagem } = await axios.get(
     `${process.env.API_URL}/api/listar-pontos?idColaborador=${dadosColaborador.colaborador.id}`,

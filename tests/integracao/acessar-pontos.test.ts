@@ -12,7 +12,7 @@ it('Deve retornar um colaborador registrado', async () => {
   const response = await axios.post(
     `${process.env.API_URL}/api/acessar-pontos`,
     {
-      codigoColaborador: '4SXXFMf',
+      codigoColaborador: 'ASK4D5FS5',
     },
   );
 

@@ -7,9 +7,12 @@ export class RegistrarSaidaController {
     private readonly registrarSaida: RegistrarSaida,
   ) {}
 
-  async handle({ body }: HttpRequest): Promise<HttpResponse> {
+  async handle({ params, body }: HttpRequest): Promise<HttpResponse> {
     try {
-      const dadosValidados = this.validator.validate(body);
+      const dadosValidados = this.validator.validate({
+        ...params,
+        ...body,
+      });
       await this.registrarSaida.execute(dadosValidados);
       return {
         statusCode: 201,

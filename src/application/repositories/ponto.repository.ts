@@ -8,6 +8,7 @@ export interface PontoRepository {
     dadosPonto: Omit<PontoType, 'dataEntrada' | 'idColaborador'>,
   ) => Promise<void>;
   buscarPorId: (id: string) => Promise<PontoType | null>;
+  buscarPorIdColaborador: (idColaborador: string) => Promise<PontoType | null>;
   listarPaginado: (query?: any) => Promise<{
     totalRegistros: number;
     registros: PontoType[];

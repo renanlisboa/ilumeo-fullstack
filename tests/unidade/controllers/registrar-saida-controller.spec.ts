@@ -32,8 +32,10 @@ describe('RegistrarSaidaController', () => {
       registrarSaida,
     );
     const requisicao = {
-      body: {
+      params: {
         id: 'qualquer_id',
+      },
+      body: {
         dataSaida: new Date().toISOString(),
       },
     };
@@ -60,8 +62,10 @@ describe('RegistrarSaidaController', () => {
     const data = new Date();
     data.setHours(data.getHours() - 1);
     const requisicao = {
-      body: {
+      params: {
         id: pontos[0].id,
+      },
+      body: {
         dataSaida: data.toISOString(),
       },
     };
@@ -90,8 +94,10 @@ describe('RegistrarSaidaController', () => {
     const data = new Date();
     data.setHours(data.getHours() + 1);
     const requisicao = {
-      body: {
+      params: {
         id: pontos[0].id,
+      },
+      body: {
         dataSaida: data.toISOString(),
       },
     };

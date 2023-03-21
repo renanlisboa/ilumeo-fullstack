@@ -1,6 +1,7 @@
 import { RouterAdapter, adaptRoute } from '../../adapters';
 import {
   makeListarPontosFactory,
+  makeBuscarPontoFactory,
   makeRegistrarEntradaFactory,
   makeRegistrarSaidaFactory,
 } from '../factories';
@@ -8,7 +9,8 @@ import {
 const pontoRoutes = RouterAdapter();
 
 pontoRoutes.get('/listar-pontos', adaptRoute(makeListarPontosFactory));
+pontoRoutes.get('/buscar-ponto', adaptRoute(makeBuscarPontoFactory));
 pontoRoutes.post('/registrar-entrada', adaptRoute(makeRegistrarEntradaFactory));
-pontoRoutes.post('/registrar-saida', adaptRoute(makeRegistrarSaidaFactory));
+pontoRoutes.put('/registrar-saida/:id', adaptRoute(makeRegistrarSaidaFactory));
 
 export default pontoRoutes;
