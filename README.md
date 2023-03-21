@@ -14,12 +14,14 @@ Esse case/teste faz parte do processo de recrutamento da empresa Ilumeo.
 
 ## Instalação Ambiente Dev
 
+ATENÇÃO! RENOMEAR ARQUIVO .env.example PARA .env'
+
 ```bash
 # docker postgres
 $ npm run docker:db
 
 # prisma orm
-$ npx run prisma migrate dev
+$ npx prisma migrate dev
 
 # instalação
 $ npm install
