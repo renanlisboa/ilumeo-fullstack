@@ -29,16 +29,18 @@ $ npx prisma migrate dev
 $ npm install
 ```
 
-## Testes
-
-```bash
-$ npm test
-```
-
 ## Execução Ambiente Dev
 
 ```bash
 $ npm run dev
+```
+
+## Testes
+
+```bash
+# ATENÇÃO! LIGAR O SERVIDOR ANTES DE TESTAR
+
+$ npm test
 ```
 
 ## Produção
