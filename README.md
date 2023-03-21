@@ -1,14 +1,7 @@
 # Ponto Ilumeo API
 Esse case/teste faz parte do processo de recrutamento da empresa Ilumeo.
 
-<p align="center">
-  <a href="#-requerimentos">Requerimentos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-instalacao">Instação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
-</p>
-
-<p align="center">
+<p>
   <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg">
 </p>
 
