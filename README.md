@@ -19,7 +19,7 @@ Esse case/teste faz parte do processo de recrutamento da empresa Ilumeo.
 $ npm run docker:db
 
 # prisma orm
-$ npx run prisma migrate dev
+$ npx prisma migrate dev
 
 # instalação
 $ npm install
