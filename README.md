@@ -38,14 +38,14 @@ $ npm run dev
 ## Testes
 
 ```bash
-# ATENÇÃO! LIGAR O SERVIDOR ANTES DE TESTAR
-
 $ npm test
 ```
 
 ## Produção
 
 ```bash
+# ATENÇÃO! LIGAR O SERVIDOR ANTES DE TESTAR
+
 # build e deploy
 $ npm run deploy
 
