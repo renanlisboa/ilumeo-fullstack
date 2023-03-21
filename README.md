@@ -20,6 +20,8 @@ ATENÇÃO! RENOMEAR ARQUIVO .env.example PARA .env'
 # docker postgres
 $ npm run docker:db
 
+#ATENÇÃO! RENOMEAR ARQUIVO .env.example PARA .env'
+
 # prisma orm
 $ npx prisma migrate dev
 
