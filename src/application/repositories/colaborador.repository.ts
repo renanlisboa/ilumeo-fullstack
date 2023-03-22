@@ -6,5 +6,5 @@ export interface ColaboradorRepository {
   cadastrar: (
     dadosColaborador: Pick<ColaboradorType, 'codigo'>,
   ) => Promise<ColaboradorType>;
-  remover?: (id: string) => Promise<void>;
+  remover: (id: string) => Promise<void>;
 }

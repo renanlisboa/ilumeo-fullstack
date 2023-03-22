@@ -1,3 +1,4 @@
+import { NotFoundError } from '../../domain/errors';
 import { PontoType } from '../../domain/types';
 import { PontoRepository } from '../repositories';
 
@@ -8,6 +9,7 @@ export class BuscarPonto {
     const data = await this.pontoRepository.buscarPorIdColaborador(
       idColaborador,
     );
+    if (!data) throw new NotFoundError('ponto em aberto não encontrado');
     return data;
   }
 }

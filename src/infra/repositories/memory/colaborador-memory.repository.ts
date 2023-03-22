@@ -4,7 +4,7 @@ import { ColaboradorRepository } from '../../../application/repositories';
 import { ColaboradorType } from '../../../domain/types';
 
 export class ColaboradorMemoryRepository implements ColaboradorRepository {
-  readonly colaboradores: ColaboradorType[];
+  colaboradores: ColaboradorType[];
 
   constructor() {
     this.colaboradores = [];
@@ -35,5 +35,12 @@ export class ColaboradorMemoryRepository implements ColaboradorRepository {
     };
     this.colaboradores.push(colaborador);
     return colaborador;
+  }
+
+  async remover(id: string): Promise<void> {
+    const colaboradoresAtualizados = this.colaboradores.filter(
+      colaborador => colaborador.id != id,
+    );
+    this.colaboradores = colaboradoresAtualizados;
   }
 }

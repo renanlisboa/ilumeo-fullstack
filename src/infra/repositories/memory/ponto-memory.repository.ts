@@ -74,4 +74,9 @@ export class PontoMemoryRepository implements PontoRepository {
   async listar(): Promise<PontoType[]> {
     return this.pontos;
   }
+
+  async remover(id: string): Promise<void> {
+    const pontosAtualizados = this.pontos.filter(ponto => ponto.id != id);
+    this.pontos = pontosAtualizados;
+  }
 }

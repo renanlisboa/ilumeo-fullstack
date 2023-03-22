@@ -6,7 +6,7 @@ import {
 } from '../../../src/infra/repositories/memory';
 import { RegistrarEntrada } from '../../../src/application/usecases';
 
-describe('Colaborador', () => {
+describe('RegistrarEntrada', () => {
   it('Deve lançar um erro ao tentar registrar entrada sem id do colaborador', async () => {
     const colaboradorMemoryRepository = new ColaboradorMemoryRepository();
     const pontoRepository = new PontoMemoryRepository();
@@ -50,7 +50,7 @@ describe('Colaborador', () => {
       });
   });
 
-  it('Deve ser possível registrar data de entrada', async () => {
+  it('Deve registrar data de entrada', async () => {
     const colaboradorMemoryRepository = new ColaboradorMemoryRepository();
     const pontoRepository = new PontoMemoryRepository();
     await colaboradorMemoryRepository.cadastrar({ codigo: '4SXXFMf' });

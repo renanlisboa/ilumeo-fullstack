@@ -14,5 +14,5 @@ export interface PontoRepository {
     registros: PontoType[];
   }>;
   listar: (idColaborador: string) => Promise<PontoType[]>;
-  remover?: (id: string) => Promise<void>;
+  remover: (id: string) => Promise<void>;
 }
