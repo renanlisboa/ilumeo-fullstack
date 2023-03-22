@@ -10,5 +10,17 @@
       "request": "launch",
       "type": "node-terminal"
     },
+    {
+      "command": "npm run test:integration",
+      "name": "integration-test-debug",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run test:unit",
+      "name": "unit-test-debug",
+      "request": "launch",
+      "type": "node-terminal"
+    },
   ]
 }
