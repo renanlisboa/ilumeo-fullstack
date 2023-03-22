@@ -51,6 +51,31 @@ describe('RegistrarEntradaController', () => {
     expect(output.statusCode).toBe(404);
   });
 
+  it('Deve retornar status code 409 caso haja uma entrada em aberto', async () => {
+    const colaboradorMemoryRepository = new ColaboradorMemoryRepository();
+    const pontoMemoryRepository = new PontoMemoryRepository();
+    await colaboradorMemoryRepository.cadastrar({ codigo: '4SXXFMf' });
+    const colaborador = await colaboradorMemoryRepository.buscarPorCodigo(
+      '4SXXFMf',
+    );
+    const registrarEntrada = new RegistrarEntrada(
+      colaboradorMemoryRepository,
+      pontoMemoryRepository,
+    );
+    const validator = new RegistrarEntradaZodValidator();
+    const registrarEntradaController = new RegistrarEntradaController(
+      validator,
+      registrarEntrada,
+    );
+    const body = { idColaborador: colaborador?.id };
+    await registrarEntrada.execute(body);
+    const requisicao = { body };
+
+    const output = await registrarEntradaController.handle(requisicao);
+
+    expect(output.statusCode).toBe(409);
+  });
+
   it('Deve retornar status code 201 caso dados obrigatórios sejam enviados', async () => {
     const colaboradorMemoryRepository = new ColaboradorMemoryRepository();
     const pontoMemoryRepository = new PontoMemoryRepository();

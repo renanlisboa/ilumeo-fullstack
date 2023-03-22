@@ -54,6 +54,7 @@ export class PontoPrismaRepository implements PontoRepository {
         where: { ...query, NOT: [{ dataSaida: null }] },
         skip: offset,
         take: limit,
+        orderBy: { dataEntrada: 'desc' },
       }),
     ]);
     return {

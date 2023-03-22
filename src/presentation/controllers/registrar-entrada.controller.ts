@@ -31,6 +31,15 @@ export class RegistrarEntradaController {
           },
         };
       }
+      if (error?.name == 'ConflictError') {
+        return {
+          statusCode: 409,
+          data: {
+            name: error.name,
+            message: error.message,
+          },
+        };
+      }
       return {
         statusCode: 500,
         data: null,
